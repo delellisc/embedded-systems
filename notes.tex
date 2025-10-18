@@ -1,0 +1,274 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+% quotes
+\usepackage{dirtytalk}
+
+\title{Lectures Notes on Embedded Systems}
+\author{Camilo de Lellis}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Aula - 11/09/2025}
+Conteúdos ministrados:  Apresentação da ementa. Introdução aos sistemas embarcados, microcontroladores, conceitos e fundamentos.
+
+\subsection{Ementa da Disciplina}
+\textbf{Curso:} Curso Superior de Tecnologia em Sistemas para Internet
+\textbf{Disciplina:} Sistemas Embarcados \textbf{Carga-Horária:} 60h (80h/a)
+\textbf{Pré-Requisito(s):} Sistemas Digitais \textbf{Número de créditos:} 4
+
+\begin{center}
+EMENTA
+\end{center}
+Aspectos relacionados ao desenvolvimento de sistemas embarcados.
+
+\begin{center}
+PROGRAMA
+\end{center}
+
+\begin{center}
+Objetivos
+\end{center}
+Conhecer técnicas e ferramentas para desenvolvimento de Sistemas Embarcados.
+
+\begin{center}
+Bases Científico-Tecnológicas (Conteúdos)
+\end{center}
+
+\begin{itemize}
+      \item 1. Introdução
+      \begin{itemize}
+           \item 1.1. Histórico e evolução;
+           \item 1.2. Características;
+           \item 1.3. Aplicações típicas;
+           \item 1.4. Tecnologias e Arquiteturas;
+           \item 1.5. Projeto e Modelagem de Sistemas Embarcados.
+      \end{itemize}
+      \item 2. Hardware
+      \begin{itemize}
+            \item 2.1. Introdução aos microprocessadores e microcontroladores;
+            \item 2.2. Dispositivos de Entrada e Saída;
+            \item 2.3. Sensores;
+            \item 2.4. Atuadores;
+            \item 2.5. Interfaces de Comunicação.
+      \end{itemize}
+      \item 3. Programação
+      \begin{itemize}
+            \item 3.1. Ambientes de Desenvolvimento;
+            \item 3.2. Principais SOs para Sistemas Embarcados;
+            \item 3.3. Desenvolvimento de Sistemas Embarcados;
+            \item 3.4. Conectividades;
+            \item 3.5. Programação concorrente: Conceitos de concorrência, problema de exclusão mútua, comunicação e sincronização em memória compartilhada e por troca de mensagens;
+            \item 3.6. Escalonamento em projetos de sistemas embarcados;
+            \item 3.7. Segurança.
+      \end{itemize}
+\end{itemize}
+
+\begin{center}
+Procedimentos Metodológicos
+\end{center}
+Aulas expositivas; aulas práticas, estudos dirigidos; seminários; vídeos; dinâmicas de grupo; visitas
+técnicas; palestras.
+
+\begin{center}
+Recursos Didáticos
+\end{center}
+Quadro branco e pincel; computador; internet; projetor de multimídia.
+
+\begin{center}
+Avaliação
+\end{center}
+Trabalhos práticos; apresentação de seminários; relatórios; avaliação escrita e prática.
+
+\begin{center}
+Bibliografia Básica
+\end{center}
+\begin{itemize}
+      \item 1. ALMEIDA, Rodrigo de; MORAES, Carlos; SERAPHIM, Thatyana. Programação de Sistemas Embarcados. Editora Elsevier. 2016.
+      \item 2. DENARDIN, Gustavo Weber; BARRIQUELLO, Carlos Henrique. Sistemas Operacionais de Tempo Real e sua Aplicação em Sistemas Embarcados. Editora Blucher. 2019.
+      \item 3. JUNIOR, Sérgio Luiz Stevan; SILVA, Rodrigo Adamshuk. Automação e Instrumentação Industrial com Arduino: Teoria e Projetos. Editora Érica. 2015.
+\end{itemize}
+
+\begin{center}
+Bibliografia Complementar
+\end{center}
+\begin{itemize}
+      \item 1. YIU, Joseph. The Definitive Guide to ARM® Cortex®-M3 and Cortex®-M4 Processors. 3. ed. Newnes. 2013.
+      \item 2. TOULSON, Rob; WILMSHURST, Tim. Fast and Effective Embedded Systems Design: Applying the ARM mbed. Editora Newnes. 2016.
+      \item 3. JUCA, Sandro; PEREIRA, Renata. Aplicações Práticas de sistemas embarcados Linux utilizando Raspberry Pi. Editora PoD. 2018.
+      \item 4. GU, Changyi. Building Embedded Systems: Programmable Hardware.Editora: Apress. 2016.
+      \item 5. BERGER, Arnold S. Embedded Systems Design: An Introduction to Processes, Tools, and Techniques. Editora CMP Books. 2017.
+\end{itemize}
+
+\begin{center}
+Software(s) de Apoio:
+\end{center}
+\begin{itemize}
+      \item Linguagem de Programação;
+      \item IDE - Ambiente de Desenvolvimento Integrado.
+\end{itemize}
+
+\subsection{Introdução aos sistemas embarcados}
+Um sistema embarcado é:
+
+\say{A combination of computer hardware and software, and perhaps additional mechanical or other parts, designed to perform a dedicated function. In some cases, embedded systems are part of a larger system or product, as in the case of an antilock braking system in a car.}
+-- Michael Barr
+
+Exemplos de sistemas embarcados são:
+
+\say{ Microwave ovens, cell phones, calculators, digital watches, VCRs, cruise missiles, GPS receivers, heart monitors, laser printers, radar guns, engine controllers, digital cameras, traffic lights, remote controls, bread machines, fax machines, pagers, cash registers, treadmills, gas pumps, credit/debit card readers, thermostats, pacemakers, blood gas monitors, grain analyzers, and a gazillion others.}
+-- Michael Barr
+
+\subsection{Introdução a microcontroladores}
+Um microcontrolador é:
+
+\say{A highly integrated microprocessor designed specifically for use in embedded systems. Microcontrollers typically include an integrated CPU, memory (a small amount of RAM, ROM, or both), and other peripherals on the same chip. Common examples are Microchip's PIC, the 8051, Intel's 80196, and Motorola's 68HCxx series.}
+-- Michael Barr
+
+\subsection{Conceitos e fundamentos}
+...
+
+\section{Aula - 15/09/2025}
+Conteúdos ministrados:  Conceitos básicos sobre sistemas embarcados - entradas digitais. 
+
+\subsection{Entradas Digitais}
+...
+
+\section{Aula - 18/09/2025}
+Conteúdos ministrados:  Introdução à programação de microcontroladores em linguagem C: tipos de dados; tabela ASCII e sistema binário; configuração de GPIO.
+
+\subsection{Introdução à programação de microcontroladores em linguagem C}
+...
+
+\subsubsection{Tipos de dados} 
+...
+
+\subsubsection{Tabela ASCII e Sistema Binário}
+...
+
+\subsubsection{Configuração de GPIO}
+...
+
+\section{Aula - 22/09/2025}
+Conteúdos ministrados:  Manipulando saídas digitais: Acionamento de LED; corrente máxima nos pinos; cálculo da resistência limitadora. Prática rápida: Implementação de um circuito de sinalização de entrada e saída de veículos. Interface entre circuitos digitais e cargas de alta potência utilizando transistores: Transistor como chave eletrônica; Acionamento de motores CC. 
+
+\subsection{Manipulando saídas digitais}
+...
+
+\subsubsection{Acionamento de LED}
+...
+
+\subsubsection{Corrente máxima nos pinos}
+...
+
+\subsubsection{Cálculo da resistência limitadora}
+...
+
+\subsubsection{Prática rápida}
+...
+
+\paragraph{Implementação de um circuito de sinalização de entrada e saída de veículos}
+...
+
+\paragraph{Interface entre circuitos digitais e cargas de alta potência utilizando transistores}
+...
+
+\paragraph{Transistor como chave eletrônica}
+...
+
+\paragraph{Acionamento de motores CC}
+...
+
+\section{Aula - 25/09/2025}
+Conteúdos ministrados:  Programação de microcontroladores: temporização. Funções delay() e millis(). Espera ocupada.
+
+\subsection{Programação de microcontroladores: Temporização}
+...
+
+\subsubsection{Função delay()}
+...
+
+\subsubsection{Função millis()}
+...
+
+\subsubsection{Espera ocupada}
+...
+
+
+\section{Aula - 29/09/2025}
+Conteúdos ministrados: Prática sobre acinamento de cargas utilizando transistores. Os alunos tiveram um primeiro contato com o laboratório de eletrônica, onde montaram um circuito simples de ativação de uma ventoinha por meio do chaveamento de um transistor de potência. O intuito da aula foi preparar a turma para futuras práticas de acionamento utilizando programação e transistores. Trabalhou-se a competência de se interpretar um esquema eletrônico, bem como de criar novos arranjos de acordo com uma necessidade específica.
+
+\subsection{Prática sobre acinamento de cargas utilizando transistores}
+...
+
+\section{Aula - 02/10/2025}
+Conteúdos ministrados: Programação com temporização: função millis().
+
+\subsection{Programação com temporização: função millis()}
+...
+
+\section{Aula - 06/10/2025}
+Conteúdos ministrados: Exercícios sobre entradas digitais, saídas, resistores de pull-lup, pull-down, projeto de sistemas digitais utilizando arduino; Utilização dos operadores lógicos da linguagem C.
+
+\subsection{Exercícios}
+...
+
+\subsubsection{Entradas digitais}
+...
+
+\subsubsection{Saídas digitais}
+...
+
+\subsubsection{Resistores de pull-up}
+...
+
+\subsubsection{Resistores de pull-down}
+...
+
+\subsubsection{Projeto de sistemas digitais utilizando arduino}
+...
+
+\subsubsection{Utilização dos operadores lógicos da linguagem C}
+...
+
+
+\section{Aula - 09/10/2025}
+Conteúdos ministrados: Programação com temporização: função millis(). Aplicações.
+
+\subsection{Programação com temporização: função millis(). Aplicações}
+...
+
+\section{Aula - 13/10/2025}
+Conteúdos ministrados: Acionamento de cargas utilizando relé: Princípio de funcionamento dos relés eletromecânicos; simbologia; exemplo de aplicação.
+
+\subsection{Acionamento de cargas utilizando relé eletromecânicos}
+...
+
+\subsubsection{Princípio de funcionamento}
+...
+
+\subsubsection{Simbologia}
+...
+
+\subsubsection{Exemplo de aplicação}
+...
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}
