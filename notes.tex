@@ -16,6 +16,9 @@
 % quotes
 \usepackage{dirtytalk}
 
+% code blocks
+\usepackage[outputdir=build, cachedir=build/_minted-notes]{minted}
+
 \title{Lectures Notes on Embedded Systems}
 \author{Camilo de Lellis}
 
@@ -272,6 +275,62 @@ Conteúdos ministrados: Acionamento de cargas utilizando relé: Princípio de fu
 ...
 
 \subsubsection{Exemplo de aplicação}
+...
+
+
+\section{Atividade - 17/10/2025}
+Descrição da Atividade: Considerando o contexto da aula do dia 13/10, que tratou sobre os relés, faça o que se pede nos itens abaixo:
+
+\textbf{1. Implemente um código simples que inverte o estado da lâmpada caso um botão seja
+pressionado.}
+\begin{itemize}
+      \item Seguir esquema mostrado em aula;
+      \item Materiais utilizados: Arduino Uno, pushbutton, relé SPDT, resistor, diodo, lâmpada incandescente, transistor NPN e bateria de 9V.
+\end{itemize}
+
+\textbf{2. Envie o link da simulação.}
+
+\subsection{Código em C++}
+\begin{minted}{c}
+// atribuição dos pinos
+const int btn_pin = 2;
+const int tst_pin = 3;
+
+// atribuindo timestamp inicial
+unsigned long millisNow = millis();
+unsigned long lastMillis = millis();
+
+// função para ler botão
+void readButton(int time){
+  millisNow = millis();
+  if (millisNow - lastMillis >= time){
+  	digitalWrite(tst_pin, !digitalRead(tst_pin));
+    lastMillis = millisNow;
+  }
+}
+
+// configuração incial
+void setup()
+{
+  pinMode(btn_pin, INPUT);
+  pinMode(tst_pin, OUTPUT);
+  digitalWrite(btn_pin, LOW);
+  digitalWrite(tst_pin, LOW);
+}
+
+// loop principal
+void loop()
+{
+  if (digitalRead(btn_pin)){
+    readButton(200); // duplo clique no intervalo de 200ms é considerado como um único clique
+  }
+}
+\end{minted}
+
+\section{Simulado da 1ª avaliação - 20/10/2025}
+...
+
+\section{Atividade: Genius da Estrela - 23/10/2025}
 ...
 
 \bibliographystyle{alpha}
