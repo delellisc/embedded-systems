@@ -58,6 +58,62 @@ void read_btn(int btn_pin, int tempo){
 }
 */
 
+int read_btn(int btn_pin, int tempo){
+  millisATUAL = millis();
+  while(millisATUAL - millisANT >= tempo){
+    millisATUAL = millis();
+    if (digitalRead(btn_pin)){
+      millisANT = millisATUAL;
+      return 1;
+    }
+  }
+  millisANT = millisATUAL;
+  return 0;
+}
+
+void read_btn_red(){
+    millisATUAL = millis();
+        while(millisATUAL - millisANT <= 10000){
+            if (digitalRead(btn_red)){
+                Serial.print("Red");
+                break;
+            }
+        }
+    millisANT = millisATUAL;
+}
+
+void read_btn_grn(){
+    millisATUAL = millis();
+        while(millisATUAL - millisANT <= 10000){
+            if (digitalRead(btn_grn)){
+                Serial.print("Green");
+                break;
+            }
+        }
+    millisANT = millisATUAL;
+}
+
+void read_btn_yel(){
+    millisATUAL = millis();
+        while(millisATUAL - millisANT <= 10000){
+            if (digitalRead(btn_yel)){
+                Serial.print("Yellow");
+                break;
+            }
+        }
+    millisANT = millisATUAL;
+}
+
+void read_btn_ble(){
+    millisATUAL = millis();
+        while(millisATUAL - millisANT <= 10000){
+            if (digitalRead(btn_ble)){
+                Serial.print("Blue");
+                break;
+            }
+        }
+    millisANT = millisATUAL;
+}
 
 void print_seq(int fim){
   for (int i = 0; i < fim; i++){
@@ -66,16 +122,16 @@ void print_seq(int fim){
     int valor = cor[i];
     switch (valor) {
       case 2:
-        Serial.print("Red");
+        read_btn_red();
         break;
       case 3:
-        Serial.print("Green");
+        read_btn_grn();
         break;
       case 4:
-        Serial.print("Yellow");
+        read_btn_yel();
         break;
       case 5:
-        Serial.print("Blue");
+        read_btn_ble();
         break;
       default:
         break;
