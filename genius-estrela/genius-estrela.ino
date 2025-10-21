@@ -32,69 +32,20 @@ void ger_seq(){
     }
 }
 
-int read_btn_red(){
+int read_btn(int btn_pin){
     millisATUAL = millis();
         while(millisATUAL - millisANT <= 10000){
             millisATUAL = millis();
-            if (digitalRead(btn_red)){
-                Serial.print("Red");
+            if (digitalRead(btn_pin)){
+                Serial.print("ACERTOU MISERAVI");
                 break;
             }
-            else if(digitalRead(btn_grn) || digitalRead(btn_yel) || digitalRead(btn_ble)){
-                Serial.print("ERRROOOUUUUUUU\n");
-                millisANT = millisATUAL;
-                return 0;
-            }
-        }
-    millisANT = millisATUAL;
-    return 1;
-}
-
-int read_btn_grn(){
-    millisATUAL = millis();
-        while(millisATUAL - millisANT <= 10000){
-            millisATUAL = millis();
-            if (digitalRead(btn_grn)){
-                Serial.print("Green");
-                break;
-            }
-            else if(digitalRead(btn_red) || digitalRead(btn_yel) || digitalRead(btn_ble)){
-                Serial.print("ERRROOOUUUUUUU\n");
-                millisANT = millisATUAL;
-                return 0;
-            }
-        }
-    millisANT = millisATUAL;
-    return 1;
-}
-
-int read_btn_yel(){
-    millisATUAL = millis();
-        while(millisATUAL - millisANT <= 10000){
-            millisATUAL = millis();
-            if (digitalRead(btn_yel)){
-                Serial.print("Yellow");
-                break;
-            }
-            else if(digitalRead(btn_grn) || digitalRead(btn_red) || digitalRead(btn_ble)){
-                Serial.print("ERRROOOUUUUUUU\n");
-                millisANT = millisATUAL;
-                return 0;
-            }
-        }
-    millisANT = millisATUAL;
-    return 1;
-}
-
-int read_btn_ble(){
-    millisATUAL = millis();
-        while(millisATUAL - millisANT <= 10000){
-            millisATUAL = millis();
-            if (digitalRead(btn_ble)){
-                Serial.print("Blue");
-                break;
-            }
-            else if(digitalRead(btn_grn) || digitalRead(btn_yel) || digitalRead(btn_red)){
+            else if(
+                btn_pin != btn_red && digitalRead(btn_red) ||
+                btn_pin != btn_grn && digitalRead(btn_grn) ||
+                btn_pin != btn_yel && digitalRead(btn_yel) ||
+                btn_pin != btn_ble && digitalRead(btn_ble)
+            ){
                 Serial.print("ERRROOOUUUUUUU\n");
                 millisANT = millisATUAL;
                 return 0;
@@ -112,7 +63,7 @@ int print_seq(int fim){
         digitalWrite(valor, HIGH);
         Serial.print(cor[i]);
       	Serial.print("\n");
-        delay(100);
+        delay(200);
         digitalWrite(valor, LOW);
     }
     for (int i = 0; i < fim; i++){
@@ -121,22 +72,22 @@ int print_seq(int fim){
         int valor = cor[i];
         switch (valor) {
           case 2:
-            if(!read_btn_red()){
+            if(!read_btn(btn_red)){
                 return 0;
             }
             break;
           case 3:
-            if(!read_btn_grn()){
+            if(!read_btn(btn_grn)){
                 return 0;
             }
             break;
           case 4:
-            if(!read_btn_yel()){
+            if(!read_btn(btn_yel)){
                 return 0;
             }
             break;
           case 5:
-            if(!read_btn_ble()){
+            if(!read_btn(btn_ble)){
                 return 0;
             }
             break;
