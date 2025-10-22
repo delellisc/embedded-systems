@@ -1,18 +1,20 @@
 unsigned long millisANT = millis();
 unsigned long millisATUAL = millis();
 
-int seq_size = 20;
+const int seq_size = 20;
 int cor[20];
 
-int led_red = 2;
-int led_grn = 3;
-int led_yel = 4;
-int led_ble = 5;
+const int led_red = 2;
+const int led_grn = 3;
+const int led_yel = 4;
+const int led_ble = 5;
 
-int btn_red = 6;
-int btn_grn = 7;
-int btn_yel = 8;
-int btn_ble = 9;
+const int btn_red = 6;
+const int btn_grn = 7;
+const int btn_yel = 8;
+const int btn_ble = 9;
+
+const int bzz_pin = 13;
 
 void setup(){
     Serial.begin(9600);
@@ -20,6 +22,7 @@ void setup(){
     pinMode(led_grn, OUTPUT);
     pinMode(led_yel, OUTPUT);
     pinMode(led_ble, OUTPUT);
+  	pinMode(bzz_pin, OUTPUT);
     pinMode(btn_red, INPUT);
     pinMode(btn_grn, INPUT);
     pinMode(btn_yel, INPUT);
@@ -60,6 +63,23 @@ int print_seq(int fim){
         Serial.print(i);
         Serial.print(": ");
         int valor = cor[i];
+      	switch (valor) {
+          case 2:
+            tone(bzz_pin, 262, 200); // Low C - lowest pitch
+            break;
+          case 3:
+            tone(bzz_pin, 523, 200); // Middle C - medium pitch
+            break;
+          case 4:
+            tone(bzz_pin, 784, 200); // High G - high pitch
+            break;
+          case 5:
+            tone(bzz_pin, 1047, 200); // Very high C - highest pitch
+            break;
+          default:
+            tone(bzz_pin, 131, 500); // Very low C - error/default sound
+            break;
+        }
         digitalWrite(valor, HIGH);
         Serial.print(cor[i]);
       	Serial.print("\n");
@@ -75,23 +95,36 @@ int print_seq(int fim){
             if(!read_btn(btn_red)){
                 return 0;
             }
+            else{
+                tone(bzz_pin, 262, 200); // Low C - lowest pitch    
+            }
             break;
           case 3:
             if(!read_btn(btn_grn)){
                 return 0;
+            }
+            else{
+                tone(bzz_pin, 523, 200); // Middle C - medium pitch    
             }
             break;
           case 4:
             if(!read_btn(btn_yel)){
                 return 0;
             }
+            else{
+                tone(bzz_pin, 784, 200); // High G - high pitch    
+            }
             break;
           case 5:
             if(!read_btn(btn_ble)){
                 return 0;
             }
+            else{
+                tone(bzz_pin, 1047, 200); // Very high C - highest pitch    
+            }
             break;
           default:
+            tone(bzz_pin, 131, 500); // Very low C - error/default sound
             break;
         }
         digitalWrite(valor, HIGH);
