@@ -14,7 +14,12 @@ const int btn_grn = 7;
 const int btn_yel = 8;
 const int btn_ble = 9;
 
-const int bzz_pin = 13;
+const int bzz_pin = 10;
+
+#define red_sound 262
+#define grn_sound 523
+#define yel_sound 784
+#define ble_sound 1047
 
 void setup(){
     Serial.begin(9600);
@@ -23,13 +28,50 @@ void setup(){
     pinMode(led_yel, OUTPUT);
     pinMode(led_ble, OUTPUT);
   	pinMode(bzz_pin, OUTPUT);
+  	digitalWrite(bzz_pin, LOW);
     pinMode(btn_red, INPUT);
     pinMode(btn_grn, INPUT);
     pinMode(btn_yel, INPUT);
     pinMode(btn_ble, INPUT);
 }
 
+void init_sound() {
+  const int melody[] = {494, 440, 349, 392, 587, 523};
+  const int duration = 150;
+
+  for (int i = 0; i < 6; i++) {
+    tone(bzz_pin, melody[i], duration);
+    delay(duration * 1.3);
+  }
+
+  noTone(bzz_pin);
+}
+
+void loss_sound() {
+  const int melody[] = {
+    494, 440, 330, 440, 523, 587,
+    440, 523, 494, 523, 587, 392, 659
+  };
+
+  const int durations[] = {
+    125, 125, 1000, 250, 250, 500,
+    2000, 1000, 250, 250, 250, 250, 1000
+  };
+
+  const int numNotes = sizeof(melody) / sizeof(melody[0]);
+
+  for (int i = 0; i < numNotes; i++) {
+    tone(bzz_pin, melody[i], durations[i]);
+    delay(durations[i] * 1.3);
+  }
+
+  noTone(bzz_pin);
+}
+
+
+
 void ger_seq(){
+  	randomSeed(analogRead(0));
     for (int i = 0; i < seq_size; i++){
         cor[i] = random(2,6);
     }
@@ -65,16 +107,16 @@ int print_seq(int fim){
         int valor = cor[i];
       	switch (valor) {
           case 2:
-            tone(bzz_pin, 262, 200); // Low C - lowest pitch
+            tone(bzz_pin, red_sound, 200); // Low C - lowest pitch
             break;
           case 3:
-            tone(bzz_pin, 523, 200); // Middle C - medium pitch
+            tone(bzz_pin, grn_sound, 200); // Middle C - medium pitch
             break;
           case 4:
-            tone(bzz_pin, 784, 200); // High G - high pitch
+            tone(bzz_pin, yel_sound, 200); // High G - high pitch
             break;
           case 5:
-            tone(bzz_pin, 1047, 200); // Very high C - highest pitch
+            tone(bzz_pin, ble_sound, 200); // Very high C - highest pitch
             break;
           default:
             tone(bzz_pin, 131, 500); // Very low C - error/default sound
@@ -96,7 +138,7 @@ int print_seq(int fim){
                 return 0;
             }
             else{
-                tone(bzz_pin, 262, 200); // Low C - lowest pitch    
+                tone(bzz_pin, red_sound, 200); // Low C - lowest pitch    
             }
             break;
           case 3:
@@ -104,7 +146,7 @@ int print_seq(int fim){
                 return 0;
             }
             else{
-                tone(bzz_pin, 523, 200); // Middle C - medium pitch    
+                tone(bzz_pin, grn_sound, 200); // Middle C - medium pitch    
             }
             break;
           case 4:
@@ -112,7 +154,7 @@ int print_seq(int fim){
                 return 0;
             }
             else{
-                tone(bzz_pin, 784, 200); // High G - high pitch    
+                tone(bzz_pin, yel_sound, 200); // High G - high pitch    
             }
             break;
           case 5:
@@ -120,7 +162,7 @@ int print_seq(int fim){
                 return 0;
             }
             else{
-                tone(bzz_pin, 1047, 200); // Very high C - highest pitch    
+                tone(bzz_pin, ble_sound, 200); // Very high C - highest pitch    
             }
             break;
           default:
@@ -142,8 +184,12 @@ void loop(){
     Serial.print(i);
     Serial.print("\n");
     ger_seq();
+  	init_sound();
+  	delay(500);
     for (int j = 0; j < seq_size + 1; j++){
       if(!print_seq(j)){
+        loss_sound();
+        delay(1000);
         return;
       }
     }
