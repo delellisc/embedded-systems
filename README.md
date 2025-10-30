@@ -1,11 +1,3 @@
----
-author:
-- Camilo de Lellis
-bibliography:
-- sample.bib
-title: Lectures Notes on Embedded Systems
----
-
 # Lecture - 11/09/2025
 
 Content taught: Apresentação da ementa. Introdução aos sistemas
@@ -178,9 +170,9 @@ Um microcontrolador é:
 
 – Michael Barr
 
-<figure id="fig:frog">
+<figure id="fig:rp2305">
 <img src="./images/pi_pico_mc.jpg" />
-<figcaption><span id="fig:frog" label="fig:frog"></span>This is the
+<figcaption><span id="fig:rp2305" label="fig:rp2305"></span>This is the
 RP2350 microcontroller chip seen in the circuit board of a Raspberry Pi
 Pico 2.</figcaption>
 </figure>
@@ -431,9 +423,34 @@ void loop()
 
 ...
 
-# Assignment: Genius da Estrela - 23/10/2025
+# Assignment - 23/10/2025
 
-...
+This assignment was aimed to reverse engineer the game called
+[Genius](https://en.wikipedia.org/wiki/Simon_(game)) from the
+traditional toy brazilian manufacturer
+[Estrela](https://en.wikipedia.org/wiki/Estrela_(company)). Actually, as
+I take these notes, just found that this game was actually
+international.
+
+Simon is a short term memory electronic game . It was patent under Ralph
+H. Baer and Howard J. Morrison . The game loop is pretty simple,
+according to Wikipedia:  
+"The device creates a series of tones and lights and requires a user to
+repeat the sequence. If the user succeeds, the series becomes
+progressively longer and more complex. Once the user fails or the time
+limit runs out, the game is over."
+
+The full simulation for our recreation is available publicy at
+[Tinkercad](https://www.tinkercad.com/things/5QbNWprTGky-genius-estrela?sharecode=emlPcyX6GBUJY967Q9LnX9mBZDVs0M2osP7Pup8dmDg).
+Also, the [full
+code](https://github.com/delellisc/embedded-systems/blob/master/genius-estrela/genius-estrela.ino)
+written is available at this remote repository too.
+
+<figure id="fig:simon-game">
+<img src="./images/simon_electronic_game.jpg" />
+<figcaption><span id="fig:simon-game" label="fig:simon-game"></span>This
+is the Simon electronic game, also called Genius in Brazil.</figcaption>
+</figure>
 
 # Lecture - 30/10/2025
 
@@ -481,5 +498,5 @@ I shall take notes with LaTeXand then convert them to Markdown. To
 convert it into my README.md, I’ll just use the following:
 
 ``` bash
-pandoc main.tex -o README.md --from=latex --to=gfm --standalone
+pandoc main.tex -o README.md --from=latex --to=gfm
 ```

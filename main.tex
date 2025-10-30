@@ -146,7 +146,7 @@ Um microcontrolador é:
 \begin{figure}
 \centering
 \includegraphics[width=0.25\linewidth]{./images/pi_pico_mc.jpg}
-\caption{\label{fig:frog}This is the RP2350 microcontroller chip seen in the circuit board of a Raspberry Pi Pico 2.}
+\caption{\label{fig:rp2305}This is the RP2350 microcontroller chip seen in the circuit board of a Raspberry Pi Pico 2.}
 \end{figure}
 
 \subsection{Conceitos e fundamentos}
@@ -330,8 +330,18 @@ void loop()
 \section{Simulado da 1ª avaliação - 20/10/2025}
 ...
 
-\section{Assignment: Genius da Estrela - 23/10/2025}
-...
+\section{Assignment - 23/10/2025}
+This assignment was aimed to reverse engineer the game called \href{https://en.wikipedia.org/wiki/Simon_(game)}{Genius} from the traditional toy brazilian manufacturer \href{https://en.wikipedia.org/wiki/Estrela_(company)}{Estrela}. Actually, as I take these notes, just found that this game was actually international.
+
+Simon is a short term memory electronic game \cite{wikipedia_simon}. It was patent under  Ralph H. Baer and Howard J. Morrison \cite{simon_patent}. The game loop is pretty simple, according to Wikipedia: \\"The device creates a series of tones and lights and requires a user to repeat the sequence. If the user succeeds, the series becomes progressively longer and more complex. Once the user fails or the time limit runs out, the game is over." \cite{wikipedia_simon}
+
+The full simulation for our recreation is available publicy at \href{https://www.tinkercad.com/things/5QbNWprTGky-genius-estrela?sharecode=emlPcyX6GBUJY967Q9LnX9mBZDVs0M2osP7Pup8dmDg}{Tinkercad}. Also, the \href{https://github.com/delellisc/embedded-systems/blob/master/genius-estrela/genius-estrela.ino}{full code}  written is available at this remote repository too.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.25\linewidth]{./images/simon_electronic_game.jpg}
+\caption{\label{fig:simon-game}This is the Simon electronic game, also called Genius in Brazil.}
+\end{figure}
 
 \section{Lecture - 30/10/2025}
 Content taught: Presentation of the updated version of last assignment. Introduction to Analog Inputs.
@@ -372,10 +382,10 @@ Arduino UNO has a resolution of 10 bits.
 I shall take notes with \LaTeX and then convert them to Markdown. To convert it into my README.md, I’ll just use the following:
 
 \begin{minted}{bash}
-pandoc main.tex -o README.md --from=latex --to=gfm --standalone
+pandoc main.tex -o README.md --from=latex --to=gfm
 \end{minted}
 
-\bibliographystyle{alpha}
-\bibliography{sample}
+\bibliographystyle{plain}
+\bibliography{references}
 
 \end{document}
