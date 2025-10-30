@@ -6,9 +6,9 @@ bibliography:
 title: Lectures Notes on Embedded Systems
 ---
 
-# Aula - 11/09/2025
+# Lecture - 11/09/2025
 
-Conteúdos ministrados: Apresentação da ementa. Introdução aos sistemas
+Content taught: Apresentação da ementa. Introdução aos sistemas
 embarcados, microcontroladores, conceitos e fundamentos.
 
 ## Ementa da Disciplina
@@ -189,18 +189,18 @@ Pico 2.</figcaption>
 
 ...
 
-# Aula - 15/09/2025
+# Lecture - 15/09/2025
 
-Conteúdos ministrados: Conceitos básicos sobre sistemas embarcados -
-entradas digitais.
+Content taught: Conceitos básicos sobre sistemas embarcados - entradas
+digitais.
 
 ## Entradas Digitais
 
 ...
 
-# Aula - 18/09/2025
+# Lecture - 18/09/2025
 
-Conteúdos ministrados: Introdução à programação de microcontroladores em
+Content taught: Introdução à programação de microcontroladores em
 linguagem C: tipos de dados; tabela ASCII e sistema binário;
 configuração de GPIO.
 
@@ -220,9 +220,9 @@ configuração de GPIO.
 
 ...
 
-# Aula - 22/09/2025
+# Lecture - 22/09/2025
 
-Conteúdos ministrados: Manipulando saídas digitais: Acionamento de LED;
+Content taught: Manipulando saídas digitais: Acionamento de LED;
 corrente máxima nos pinos; cálculo da resistência limitadora. Prática
 rápida: Implementação de um circuito de sinalização de entrada e saída
 de veículos. Interface entre circuitos digitais e cargas de alta
@@ -265,10 +265,10 @@ Acionamento de motores CC.
 
 ...
 
-# Aula - 25/09/2025
+# Lecture - 25/09/2025
 
-Conteúdos ministrados: Programação de microcontroladores: temporização.
-Funções delay() e millis(). Espera ocupada.
+Content taught: Programação de microcontroladores: temporização. Funções
+delay() e millis(). Espera ocupada.
 
 ## Programação de microcontroladores: Temporização
 
@@ -286,9 +286,9 @@ Funções delay() e millis(). Espera ocupada.
 
 ...
 
-# Aula - 29/09/2025
+# Lecture - 29/09/2025
 
-Conteúdos ministrados: Prática sobre acinamento de cargas utilizando
+Content taught: Prática sobre acinamento de cargas utilizando
 transistores. Os alunos tiveram um primeiro contato com o laboratório de
 eletrônica, onde montaram um circuito simples de ativação de uma
 ventoinha por meio do chaveamento de um transistor de potência. O
@@ -301,19 +301,19 @@ novos arranjos de acordo com uma necessidade específica.
 
 ...
 
-# Aula - 02/10/2025
+# Lecture - 02/10/2025
 
-Conteúdos ministrados: Programação com temporização: função millis().
+Content taught: Programação com temporização: função millis().
 
 ## Programação com temporização: função millis()
 
 ...
 
-# Aula - 06/10/2025
+# Lecture - 06/10/2025
 
-Conteúdos ministrados: Exercícios sobre entradas digitais, saídas,
-resistores de pull-lup, pull-down, projeto de sistemas digitais
-utilizando arduino; Utilização dos operadores lógicos da linguagem C.
+Content taught: Exercícios sobre entradas digitais, saídas, resistores
+de pull-lup, pull-down, projeto de sistemas digitais utilizando arduino;
+Utilização dos operadores lógicos da linguagem C.
 
 ## Exercícios
 
@@ -343,19 +343,19 @@ utilizando arduino; Utilização dos operadores lógicos da linguagem C.
 
 ...
 
-# Aula - 09/10/2025
+# Lecture - 09/10/2025
 
-Conteúdos ministrados: Programação com temporização: função millis().
+Content taught: Programação com temporização: função millis().
 Aplicações.
 
 ## Programação com temporização: função millis(). Aplicações
 
 ...
 
-# Aula - 13/10/2025
+# Lecture - 13/10/2025
 
-Conteúdos ministrados: Acionamento de cargas utilizando relé: Princípio
-de funcionamento dos relés eletromecânicos; simbologia; exemplo de
+Content taught: Acionamento de cargas utilizando relé: Princípio de
+funcionamento dos relés eletromecânicos; simbologia; exemplo de
 aplicação.
 
 ## Acionamento de cargas utilizando relé eletromecânicos
@@ -374,9 +374,9 @@ aplicação.
 
 ...
 
-# Atividade - 17/10/2025
+# Assignment - 17/10/2025
 
-Descrição da Atividade: Considerando o contexto da aula do dia 13/10,
+Assignment Description: Considerando o contexto da aula do dia 13/10,
 que tratou sobre os relés, faça o que se pede nos itens abaixo:
 
 **1. Implemente um código simples que inverte o estado da lâmpada caso
@@ -431,7 +431,7 @@ void loop()
 
 ...
 
-# Atividade: Genius da Estrela - 23/10/2025
+# Assignment: Genius da Estrela - 23/10/2025
 
 ...
 
