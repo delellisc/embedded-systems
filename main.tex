@@ -333,6 +333,48 @@ void loop()
 \section{Atividade: Genius da Estrela - 23/10/2025}
 ...
 
+\section{Lecture - 30/10/2025}
+Content taught: Presentation of the updated version of last assignment. Introduction to Analog Inputs.
+
+Updated code:
+\begin{minted}{cpp}
+int read_btn(int btn_pin){
+    millisATUAL = millis();
+        while(millisATUAL - millisANT <= 10000){
+            millisATUAL = millis();
+            if (digitalRead(btn_pin)){
+                Serial.print("ACERTO");
+                // returns 1 only when right
+                return 1;
+            }
+            else if(
+                btn_pin != btn_red && digitalRead(btn_red) ||
+                btn_pin != btn_grn && digitalRead(btn_grn) ||
+                btn_pin != btn_yel && digitalRead(btn_yel) ||
+                btn_pin != btn_ble && digitalRead(btn_ble)
+            ){
+                Serial.print("ERRO\n");
+                return 0;
+            }
+        }
+    // returns 0 if no condition is met    
+    return 0;
+}
+\end{minted}
+
+\href{https://en.wikipedia.org/wiki/IEEE_754}{Floating point number arithmetic}...
+
+To represent floating point numbers, we need the least significant bit to be less than 2 to the power of 0.
+
+Arduino UNO has a resolution of 10 bits. 
+
+\section{\LaTeX}
+I shall take notes with \LaTeX and then convert them to Markdown. To convert it into my README.md, I’ll just use the following:
+
+\begin{minted}{bash}
+pandoc main.tex -o README.md --from=latex --to=gfm --standalone
+\end{minted}
+
 \bibliographystyle{alpha}
 \bibliography{sample}
 

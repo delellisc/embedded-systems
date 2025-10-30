@@ -58,7 +58,7 @@ void loss_sound() {
     2000, 1000, 250, 250, 250, 250, 1000
   };
 
-  const int numNotes = sizeof(melody) / sizeof(melody[0]);
+  const int numNotes = 13;
 
   for (int i = 0; i < numNotes; i++) {
     tone(bzz_pin, melody[i], durations[i]);
@@ -67,8 +67,6 @@ void loss_sound() {
 
   noTone(bzz_pin);
 }
-
-
 
 void ger_seq(){
   	randomSeed(analogRead(0));
@@ -82,8 +80,8 @@ int read_btn(int btn_pin){
         while(millisATUAL - millisANT <= 10000){
             millisATUAL = millis();
             if (digitalRead(btn_pin)){
-                Serial.print("ACERTOU MISERAVI");
-                break;
+                Serial.print("ACERTO");
+                return 1;
             }
             else if(
                 btn_pin != btn_red && digitalRead(btn_red) ||
@@ -91,13 +89,11 @@ int read_btn(int btn_pin){
                 btn_pin != btn_yel && digitalRead(btn_yel) ||
                 btn_pin != btn_ble && digitalRead(btn_ble)
             ){
-                Serial.print("ERRROOOUUUUUUU\n");
-                millisANT = millisATUAL;
+                Serial.print("ERRO\n");
                 return 0;
             }
         }
-    millisANT = millisATUAL;
-    return 1;
+    return 0;
 }
 
 int print_seq(int fim){
@@ -107,38 +103,40 @@ int print_seq(int fim){
         int valor = cor[i];
       	switch (valor) {
           case 2:
-            tone(bzz_pin, red_sound, 200); // Low C - lowest pitch
+            tone(bzz_pin, red_sound, 200);
             break;
           case 3:
-            tone(bzz_pin, grn_sound, 200); // Middle C - medium pitch
+            tone(bzz_pin, grn_sound, 200);
             break;
           case 4:
-            tone(bzz_pin, yel_sound, 200); // High G - high pitch
+            tone(bzz_pin, yel_sound, 200);
             break;
           case 5:
-            tone(bzz_pin, ble_sound, 200); // Very high C - highest pitch
+            tone(bzz_pin, ble_sound, 200);
             break;
           default:
-            tone(bzz_pin, 131, 500); // Very low C - error/default sound
+            tone(bzz_pin, 131, 500);
             break;
         }
         digitalWrite(valor, HIGH);
+      	delay(200);
         Serial.print(cor[i]);
       	Serial.print("\n");
-        delay(200);
         digitalWrite(valor, LOW);
+      	delay(200);
     }
     for (int i = 0; i < fim; i++){
         Serial.print(i);
         Serial.print(": ");
         int valor = cor[i];
+      	millisANT = millis();
         switch (valor) {
           case 2:
             if(!read_btn(btn_red)){
                 return 0;
             }
             else{
-                tone(bzz_pin, red_sound, 200); // Low C - lowest pitch    
+                tone(bzz_pin, red_sound, 200);
             }
             break;
           case 3:
@@ -146,7 +144,7 @@ int print_seq(int fim){
                 return 0;
             }
             else{
-                tone(bzz_pin, grn_sound, 200); // Middle C - medium pitch    
+                tone(bzz_pin, grn_sound, 200);
             }
             break;
           case 4:
@@ -154,7 +152,7 @@ int print_seq(int fim){
                 return 0;
             }
             else{
-                tone(bzz_pin, yel_sound, 200); // High G - high pitch    
+                tone(bzz_pin, yel_sound, 200);
             }
             break;
           case 5:
@@ -162,16 +160,17 @@ int print_seq(int fim){
                 return 0;
             }
             else{
-                tone(bzz_pin, ble_sound, 200); // Very high C - highest pitch    
+                tone(bzz_pin, ble_sound, 200);
             }
             break;
           default:
-            tone(bzz_pin, 131, 500); // Very low C - error/default sound
+            tone(bzz_pin, 131, 500);
             break;
         }
         digitalWrite(valor, HIGH);
         delay(200);
         digitalWrite(valor, LOW);
+      	delay(200);
         Serial.print("\n");
     }
     return 1;
@@ -180,7 +179,7 @@ int print_seq(int fim){
 int i = 1;
 
 void loop(){ 
-    Serial.print("\nIteration n: ");
+    Serial.print("\nLoop n: ");
     Serial.print(i);
     Serial.print("\n");
     ger_seq();
