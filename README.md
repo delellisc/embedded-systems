@@ -492,6 +492,16 @@ to be less than 2 to the power of 0.
 
 Arduino UNO has a resolution of 10 bits.
 
+# Exam - 03/11/2025
+
+Exam took place this monday and had most of the questions being based in
+basic digital electronics. Transistors, relays, pull down and pull up
+resistors, microcontrollers, Arduino code.
+
+# Lecture - 06/11/2025
+
+Content taught: Soldering, running code on Arduino Nano
+
 # LaTeX
 
 I shall take notes with LaTeXand then convert them to Markdown. To
