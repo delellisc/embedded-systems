@@ -15,7 +15,7 @@ int two[5] = {a2, b2, g2, e2, d2};
 
 void turn_off_segments(){
   for(int i = 0; i < 8; i++){
-    pinMode(digit_pins[i], LOW);
+    digitalWrite(digit_pins[i], LOW);
   }
 }
 
@@ -29,17 +29,20 @@ void setup() {
 void loop() {
   for(int i = 0; i < 6; i++){
     digitalWrite(zero[i], HIGH);
+    Serial.println(zero[i]);
   }
   delay(1000);
   turn_off_segments();
   for(int i = 0; i < 2; i++){
     digitalWrite(one[i], HIGH);
+    Serial.println(one[i]);
   }
   delay(1000);
   turn_off_segments();
   for(int i = 0; i < 5; i++){
     digitalWrite(two[i], HIGH);
+    Serial.println(two[i]);
   }
-  delay(1000);
+  delay(2000);
   turn_off_segments();
 }
